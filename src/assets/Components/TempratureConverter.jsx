@@ -9,7 +9,7 @@ const TemperatureConverter = () => {
     const value = e.target.value
     setCelsius(value)
     setFahrenheit(value !== "" ? (value * 9) / 5 + 32 : "")
-    setKelvin(value !== "" && parseInt(value) + 273.15)
+    setKelvin(value !== "" && parseFloat(value) + 273.15)
   }
 
   const handleFahrenheitChange = (e) => {
@@ -21,7 +21,6 @@ const TemperatureConverter = () => {
 
   const handleKelvinChange = (e) => {
     const { value } = e.target
-
     setKelvin(value)
     setCelsius(value !== "" ? value - 273.15 : "")
     setFahrenheit(value !== "" ? ((value - 273.15) * 9) / 5 + 32 : "")
@@ -30,54 +29,58 @@ const TemperatureConverter = () => {
   const resetFields = () => {
     setCelsius("")
     setFahrenheit("")
+    setKelvin("")
   }
 
   return (
-    <div className=' flex justify-content-center align-item-center container mt-5'>
-      <h2 className='text-center'>Temperature Converter</h2>
-      <div className='row mt-4 justify-content-center'>
-        <div className='col-md-4'>
-          <div className='mb-3'>
-            <label htmlFor='celsius' className='form-label'>
+    <div className='flex justify-center items-center container w-full mx-auto mt-10'>
+      <div className='w-full bg-white shadow-lg rounded-lg p-6'>
+        <h2 className='text-2xl font-bold text-center mb-6'>Temperature Converter</h2>
+        <div className='space-y-4'>
+          <div>
+            <label htmlFor='celsius' className='block text-sm font-medium mb-1'>
               Celsius (°C)
             </label>
             <input
               type='number'
               id='celsius'
-              className='form-control'
+              className='w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none'
               value={celsius}
               onChange={handleCelsiusChange}
               placeholder='Enter Celsius'
             />
           </div>
-          <div className='mb-3'>
-            <label htmlFor='fahrenheit' className='form-label'>
+          <div>
+            <label htmlFor='fahrenheit' className='block text-sm font-medium mb-1'>
               Fahrenheit (°F)
             </label>
             <input
               type='number'
               id='fahrenheit'
-              className='form-control'
+              className='w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none'
               value={fahrenheit}
               onChange={handleFahrenheitChange}
               placeholder='Enter Fahrenheit'
             />
           </div>
-          <div className='mb-3'>
-            <label htmlFor='fahrenheit' className='form-label'>
+          <div>
+            <label htmlFor='kelvin' className='block text-sm font-medium mb-1'>
               Kelvin (°K)
             </label>
             <input
               type='number'
               id='kelvin'
-              className='form-control'
+              className='w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none'
               value={kelvin}
               onChange={handleKelvinChange}
               placeholder='Enter Kelvin'
             />
           </div>
-          <button className='btn btn-danger w-100' onClick={resetFields}>
-            <i className='bi bi-x-circle me-2'></i>Reset
+          <button
+            className='w-full bg-red-500 text-white font-bold py-2 rounded-lg hover:bg-red-600 transition-colors'
+            onClick={resetFields}
+          >
+            Reset
           </button>
         </div>
       </div>
