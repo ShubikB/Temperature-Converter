@@ -8,35 +8,34 @@ import { useRef, useState } from "react"
 //Feet ft
 // inch in
 
-const factor = () => {}
 export default function LengthConverter() {
-  const inputValue = useRef("")
-  const [inputLengthUnit, setInputLengthUnit] = useState("")
+  const [inputValue, setInputvalue] = useState("")
+  const [inputLengthUnit, setInputLengthUnit] = useState("ghhjgcgfjk")
   const [outputLengthUnit, setOutputLengthUnit] = useState("")
   const [outputValue, setOutputValue] = useState("")
 
-  const factors = {}
-
   const handleInputUnitChange = (e) => {
     setInputLengthUnit(e.target.value)
-    console.log(`the input unit is ${e.target.value}`)
-    let outputValue = inputValue + 23.3434
   }
-  // console.log(inputValue.current.value)
-  console.log(inputLengthUnit)
+  console.log(`the input unit is ${inputLengthUnit}`)
 
   const handleOutputUnitChange = (e) => {
     setOutputLengthUnit(e.target.value)
-    console.log(`the output unit is ${e.target.value}`)
   }
-  // console.log(outputValue)
+  console.log(`the output unit is ${outputLengthUnit}`)
 
-  const handleConversion = (e) => {
-    let value = e.target.value
-    console.log(value + "value ")
-    setOutputValue(23)
-    return outputValue
+  const handleConversion = () => {
+    console.log(inputLengthUnit, outputLengthUnit, inputValue)
+    if (inputLengthUnit === "km" && outputLengthUnit === "m") {
+      console.log(` the output val is ${outputValue}`)
+
+      setOutputValue(inputValue * 100)
+
+      //
+      // setOutputValue (inputValue * factor)
+    }
   }
+  console.log(`the output fn is after  val is ${outputValue}`)
 
   return (
     <div className='lengthConverterWrapper max-w-screen-2xl bg-white rounded-lg p-3 m-5'>
@@ -44,11 +43,13 @@ export default function LengthConverter() {
         Enter length
       </label>
       <input
-        ref={inputValue}
         type='number'
         name='inputValue'
         id='inputValue'
         className='w-full p-2 rounded-lg border border-gray-300'
+        onChange={(e) => {
+          setInputvalue(e.target.value)
+        }}
       />
       <label htmlFor='lengthUnit' className=' m-3'>
         Unit
