@@ -15,7 +15,7 @@ export default function ChooseConverter() {
           htmlFor='welcomeMessage'
           className='block mb-2 text-base font-medium text-gray-900 dark:text-white '
         >
-          Welcome to <br /> <span className='text-orange-900 text-5xl'> COCO Converter</span>
+          Welcome to <br /> <span className='text-orange-900 text-5xl'>Easy Converter</span>
         </label>
       ) : (
         <label
@@ -35,7 +35,6 @@ export default function ChooseConverter() {
         id='converterType'
         defaultValue='default'
         onChange={(e) => {
-          console.log("converter type changed ")
           setSelectedConverter(e.target.value)
           setIsLandingPage(false)
         }}
@@ -50,7 +49,7 @@ export default function ChooseConverter() {
         <option value='mass'>Mass Converter</option>
       </select>
 
-      <div className='w-full max-w-lg'>
+      <div className=' w-full flex justify-center items-center'>
         {selectedConverter === "temperature" && <TemperatureConverter />}
         {selectedConverter === "length" && <LengthConverter />}
         {selectedConverter === "mass" && <MassConverter />}
